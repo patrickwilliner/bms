@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BuildingService } from './building.service';
 import { Building } from './models/building.model';
-import { NicknameService } from './nickname.service';
 
 const ID_TEST_BUILDING = 0;
 

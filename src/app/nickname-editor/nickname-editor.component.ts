@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormArray, FormControl, ValidationErrors, Validators } from '@angular/forms';
+import { FormArray, FormControl, ValidationErrors, Validators } from '@angular/forms';
 import { Observable, of, Subscription } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 const dummyValidator = (nickname: string) => {
-  return of(true);
+  return of(null);
 };
 
 @Component({
@@ -69,10 +69,10 @@ export class NicknameEditorComponent implements OnInit, OnDestroy {
     });
   }
 
-  private validateNickname(ctrl: FormControl) {
+  private validateNickname(ctrl: FormControl): ValidationErrors {
     return this.validator(ctrl.value).pipe(
       map(res => {
-        return res ? null : {loginExist: true};
+        return res ? null : {notStartingWithA: true};
       })
     );
   }
