@@ -1,7 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
+import { Building } from '../models/building.model';
+import { NicknameEditorComponent } from '../nickname-editor/nickname-editor.component';
 
 import { BuildingEditorComponent } from './building-editor.component';
+
+const buildingMock: Building = {
+  id: 0,
+  address: '',
+  description: '',
+  nicknames: []
+};
 
 describe('BuildingEditorComponent', () => {
   let component: BuildingEditorComponent;
@@ -10,7 +19,7 @@ describe('BuildingEditorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [MatCardModule],
-      declarations: [ BuildingEditorComponent ]
+      declarations: [ BuildingEditorComponent, NicknameEditorComponent ]
     })
     .compileComponents();
   });
@@ -18,6 +27,7 @@ describe('BuildingEditorComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BuildingEditorComponent);
     component = fixture.componentInstance;
+    component.building = buildingMock;
     fixture.detectChanges();
   });
 
