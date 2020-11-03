@@ -2,6 +2,9 @@
     <div *ngFor="let control of nicknameFormArray.controls; index as i">
         <mat-form-field appearance="legacy">
             <input matInput [formControl]="nicknameFormArray.controls[i]">
+            <mat-error *ngIf="nicknameFormArray.controls[i].invalid">
+                Nickname must start with 'a'
+            </mat-error>
         </mat-form-field>
 
         <button mat-icon-button aria-label="delete">
@@ -9,5 +12,5 @@
         </button>
     </div>
 
-    <button mat-raised-button (click)="onClickAddNickname()">Add nickname</button>
+    <button mat-raised-button (click)="onClickAddNickname()" class="add">Add nickname</button>
 </div>
