@@ -7,11 +7,11 @@
   </mat-card-header>
   <mat-card-content>
     <app-nickname-editor [nicknames]="building.nicknames"
-                         [validator]="nicknameService.isValidNickname"
+                         [validator]="nicknameValidator"
                          (nicknamesChanged)="onNicknamesChanged($event)">
     </app-nickname-editor>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>Save</button>
+    <button mat-button [disabled]="saveButtonDisabled" (click)="onClickSave($event)">Save</button>
   </mat-card-actions>
 </mat-card>

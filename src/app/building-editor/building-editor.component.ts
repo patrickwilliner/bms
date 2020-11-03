@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Building } from '../models/building.model';
 import { NicknameService } from '../nickname.service';
 
@@ -11,10 +12,23 @@ export class BuildingEditorComponent {
   @Input()
   building: Building;
 
+  saveButtonDisabled = true;
+
+  nicknameValidator: (nickname: string) => Observable<boolean>;
+
   constructor(nicknameService: NicknameService) {
+    this.nicknameValidator = nicknameService.isValidNickname;
   }
 
-  onNicknamesChanged(nicknames: string[]): void {
-    console.log(nicknames);
+  onNicknamesChanged(change: {value: string[], valid: boolean}): void {
+    this.saveButtonDisabled = !change.valid;
+
+    if (change.valid) {
+      this.building.nicknames = change.value;
+    }
+  }
+
+  onClickSave() {
+    console.log('saving', this.building);
   }
 }

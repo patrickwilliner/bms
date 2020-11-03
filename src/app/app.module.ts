@@ -9,6 +9,7 @@ import { BuildingEditorComponent } from './building-editor/building-editor.compo
 import { MatCardModule } from '@angular/material/card';
 import { NicknameEditorComponent } from './nickname-editor/nickname-editor.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { NicknameService } from './nickname.service';
 
 const modules = [
@@ -16,7 +17,8 @@ const modules = [
   BrowserAnimationsModule,
   ReactiveFormsModule,
   MatCardModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatInputModule
 ];
 
 const declarations = [

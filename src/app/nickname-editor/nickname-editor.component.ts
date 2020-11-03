@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormArray, FormControl } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, ValidationErrors, Validators } from '@angular/forms';
 import { Observable, of, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
@@ -20,7 +20,7 @@ export class NicknameEditorComponent implements OnInit, OnDestroy {
   validator: (nickname: string) => Observable<boolean> = dummyValidator;
 
   @Output()
-  nicknamesChanged = new EventEmitter<string[]>();
+  nicknamesChanged = new EventEmitter<{value: string[], valid: boolean}>();
 
   subscriptions: Subscription[] = [];
   nicknameFormArray = new FormArray([]);
@@ -48,7 +48,7 @@ export class NicknameEditorComponent implements OnInit, OnDestroy {
   }
 
   private addNickname(nickname: string): void {
-    this.nicknameFormArray.push(new FormControl(nickname, this.validateNickname));
+    this.nicknameFormArray.push(new FormControl(nickname, Validators.required, this.validateNickname.bind(this)));
   }
 
   private registerFormListener(): void {
@@ -58,13 +58,17 @@ export class NicknameEditorComponent implements OnInit, OnDestroy {
   }
 
   private notifyNicknamesChanged(): void {
-    console.log(this.nicknameFormArray);
-    this.nicknamesChanged.emit(this.nicknameFormArray.value);
+    this.nicknamesChanged.emit({
+      value: this.nicknameFormArray.value,
+      valid: this.nicknameFormArray.valid
+    });
   }
 
-  private validateNickname(formControl: FormControl): Observable<any> {
-    return this.validator(formControl.value).pipe(map(valid => {
-      illegalValue: valid
-    }));
+  private validateNickname(ctrl: FormControl) {
+    return this.validator(ctrl.value).pipe(
+      map(res => {
+        return res ? null : {loginExist: true};
+      })
+    );
   }
 }

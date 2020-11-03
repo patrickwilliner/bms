@@ -1,5 +1,7 @@
 <div *ngFor="let control of nicknameFormArray.controls; index as i">
-    <input matInput [formControl]="nicknameFormArray.controls[i]" />
+    <mat-form-field appearance="legacy">
+        <input matInput [formControl]="nicknameFormArray.controls[i]">
+    </mat-form-field>
 </div>
 
 <button mat-button (click)="onClickAddNickname()">+</button>
