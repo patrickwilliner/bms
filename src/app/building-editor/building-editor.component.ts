@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Building } from '../models/building.model';
 
 @Component({
   selector: 'app-building-editor',
   templateUrl: './building-editor.component.html',
   styleUrls: ['./building-editor.component.scss']
 })
-export class BuildingEditorComponent implements OnInit {
+export class BuildingEditorComponent {
+  @Input()
+  building: Building;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-nickname-editor',
@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nickname-editor.component.scss']
 })
 export class NicknameEditorComponent implements OnInit {
-  nicknames = ["test 1", "test 2"];
+  @Input()
+  nicknames: string[] = [];
+
+  @Output()
+  nicknamesChanged = new EventEmitter<string[]>();
 
   constructor() {
   }

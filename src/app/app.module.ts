@@ -8,6 +8,7 @@ import { BuildingEditorComponent } from './building-editor/building-editor.compo
 import { MatCardModule } from '@angular/material/card';
 import { NicknameEditorComponent } from './nickname-editor/nickname-editor.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NicknameService } from './nickname.service';
 
 const modules = [
   BrowserModule,
@@ -20,6 +21,10 @@ const declarations = [
   AppComponent,
   BuildingEditorComponent,
   NicknameEditorComponent
+];
+
+const services = [
+  NicknameService
 ];
 
 @NgModule({
