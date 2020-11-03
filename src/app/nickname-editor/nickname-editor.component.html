@@ -4,10 +4,10 @@
             <input matInput [formControl]="nicknameFormArray.controls[i]">
         </mat-form-field>
 
-        <button mat-icon-button aria-label="Example icon button with a home icon">
+        <button mat-icon-button aria-label="delete">
             <mat-icon (click)="onClickDelete(i)">delete</mat-icon>
-          </button>
+        </button>
     </div>
 
-    <button mat-stroked-button (click)="onClickAddNickname()">+</button>
+    <button mat-raised-button (click)="onClickAddNickname()">Add nickname</button>
 </div>

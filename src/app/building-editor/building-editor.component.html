@@ -1,22 +1,28 @@
 <div class="container">
   <h1>Building Editor</h1>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{building.address}}</mat-card-title>
-      <mat-card-subtitle>{{building.description}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content class="content">
-      <h3>Nicknames:</h3>
+  <div class="group">
+    <span class="label">Building:</span>
+    &nbsp;
+    <span class="value">{{building.address}}</span>
+  </div>
 
-      <app-nickname-editor [nicknames]="building.nicknames"
-                           [validator]="nicknameValidator"
-                           (nicknamesChanged)="onNicknamesChanged($event)">
-      </app-nickname-editor>
-    </mat-card-content>
-    
-    <mat-card-actions>
-      <button mat-stroked-button [disabled]="saveButtonDisabled" (click)="onClickSave()">Save</button>
-    </mat-card-actions>
-  </mat-card>
+  <div class="group">
+    <span class="label">Description:</span>
+    &nbsp;
+    <span class="value">{{building.description}}</span>
+  </div>
+
+  <div class="nicknames">
+    <h3>Nicknames:</h3>
+
+    <app-nickname-editor [nicknames]="building.nicknames"
+                         [validator]="nicknameValidator"
+                         (nicknamesChanged)="onNicknamesChanged($event)">
+    </app-nickname-editor>
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" [disabled]="saveButtonDisabled" (click)="onClickSave()">Save</button>
+  </div>
 </div>
