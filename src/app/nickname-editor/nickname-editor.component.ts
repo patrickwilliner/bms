@@ -41,6 +41,11 @@ export class NicknameEditorComponent implements OnInit, OnDestroy {
     this.addNickname('');
   }
 
+  onClickDelete(index: number): void {
+    this.nicknameFormArray.removeAt(index);
+    this.notifyNicknamesChanged();
+  }
+
   private buildForm(): void {
     this.nicknames.forEach(nickname => {
       this.addNickname(nickname);

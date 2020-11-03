@@ -1,7 +1,13 @@
-<div *ngFor="let control of nicknameFormArray.controls; index as i">
-    <mat-form-field appearance="legacy">
-        <input matInput [formControl]="nicknameFormArray.controls[i]">
-    </mat-form-field>
-</div>
+<div class="container">
+    <div *ngFor="let control of nicknameFormArray.controls; index as i">
+        <mat-form-field appearance="legacy">
+            <input matInput [formControl]="nicknameFormArray.controls[i]">
+        </mat-form-field>
 
-<button mat-button (click)="onClickAddNickname()">+</button>
+        <button mat-icon-button aria-label="Example icon button with a home icon">
+            <mat-icon (click)="onClickDelete(i)">delete</mat-icon>
+          </button>
+    </div>
+
+    <button mat-stroked-button (click)="onClickAddNickname()">+</button>
+</div>

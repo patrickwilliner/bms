@@ -28,7 +28,8 @@ export class BuildingEditorComponent {
     }
   }
 
-  onClickSave() {
+  onClickSave(): void {
     console.log('saving', this.building);
+    this.saveButtonDisabled = true;
   }
 }
