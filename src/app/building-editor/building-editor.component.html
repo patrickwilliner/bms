@@ -6,10 +6,12 @@
     <mat-card-subtitle>{{building.description}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <app-nickname-editor></app-nickname-editor>
+    <app-nickname-editor [nicknames]="building.nicknames"
+                         [validator]="nicknameService.isValidNickname"
+                         (nicknamesChanged)="onNicknamesChanged($event)">
+    </app-nickname-editor>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>Cancel</button>
     <button mat-button>Save</button>
   </mat-card-actions>
 </mat-card>

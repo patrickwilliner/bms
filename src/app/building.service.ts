@@ -5,7 +5,7 @@ const TEST_DATA: Building[] = [{
   id: 0,
   address: '30 St Mary Axe, London',
   description: 'headquarter',
-  nicknames: []
+  nicknames: ['nick 1', 'nick 2']
 }];
 
 @Injectable({

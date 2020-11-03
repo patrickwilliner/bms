@@ -1,8 +1,5 @@
-<ul>
-    <li *ngFor="let nickname of nicknames">
-        <input matInput [value]="nickname">
-    </li>
-    <li>
-        <input matInput>
-    </li>
-</ul>
+<div *ngFor="let control of nicknameFormArray.controls; index as i">
+    <input matInput [formControl]="nicknameFormArray.controls[i]" />
+</div>
+
+<button mat-button (click)="onClickAddNickname()">+</button>

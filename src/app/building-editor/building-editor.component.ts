@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Building } from '../models/building.model';
+import { NicknameService } from '../nickname.service';
 
 @Component({
   selector: 'app-building-editor',
@@ -10,6 +11,10 @@ export class BuildingEditorComponent {
   @Input()
   building: Building;
 
-  constructor() {
+  constructor(nicknameService: NicknameService) {
+  }
+
+  onNicknamesChanged(nicknames: string[]): void {
+    console.log(nicknames);
   }
 }
