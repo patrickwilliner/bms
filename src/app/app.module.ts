@@ -5,17 +5,21 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BuildingEditorComponent } from './building-editor/building-editor.component';
 
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { NicknameEditorComponent } from './nickname-editor/nickname-editor.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const modules = [
   BrowserModule,
   BrowserAnimationsModule,
-  MatCardModule
+  MatCardModule,
+  MatFormFieldModule
 ];
 
 const declarations = [
   AppComponent,
-  BuildingEditorComponent
+  BuildingEditorComponent,
+  NicknameEditorComponent
 ];
 
 @NgModule({
