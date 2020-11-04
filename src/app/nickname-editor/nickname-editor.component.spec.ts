@@ -46,17 +46,31 @@ describe('NicknameEditorComponent', () => {
   });
 
   it('should add nickname', () => {
-    const button = fixture.debugElement.nativeElement.querySelector('button.add');
-    button.click();
-    fixture.detectChanges();
-
     fixture.whenStable().then(() => {
+      const button = fixture.debugElement.nativeElement.querySelector('button.add');
+      button.click();
+      fixture.detectChanges();
+
       const inputField = fixture.debugElement.nativeElement.querySelectorAll('input.nickname')[0];
       inputField.value = 'a nickname';
       inputField.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       
       expect(component.nicknameFormArray.value[0]).toBe('a nickname');
+    });
+  });
+
+  it('should remove nickname', () => {
+    fixture.whenStable().then(() => {
+      const button = fixture.debugElement.nativeElement.querySelector('button.add');
+      button.click();
+      fixture.detectChanges();
+
+      const deleteButton = fixture.debugElement.nativeElement.querySelectorAll('button.delete')[0];
+      deleteButton.click();
+      fixture.detectChanges();
+
+      expect(component.nicknameFormArray.length).toBe(0);
     });
   });
 });
